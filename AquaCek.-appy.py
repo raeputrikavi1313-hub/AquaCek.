@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 
@@ -12,419 +11,997 @@ st.set_page_config(
 )
 
 # ==================================
-# CSS PREMIUM
+# CSS SEDERHANA
 # ==================================
 st.markdown("""
 <style>
-
-/* Background */
 .stApp{
-background: linear-gradient(
-135deg,
-#E3F2FD,
-#F5FBFF,
-#D6F5FF
-);
+background: linear-gradient(135deg,#E3F2FD,#F5FBFF);
 }
 
-/* Animasi */
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0px);
-}
-}
-
-.block-container{
-animation: fadeIn 0.8s ease;
-}
-
-/* Glass Card */
-.glass{
-background: rgba(255,255,255,0.75);
-backdrop-filter: blur(10px);
-padding:25px;
-border-radius:25px;
-box-shadow:0px 8px 25px rgba(0,0,0,0.08);
-}
-
-/* Icon Mengambang */
-@keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-8px);}
-100%{transform:translateY(0px);}
-}
-
-.hero-icon{
-font-size:70px;
-animation: float 3s infinite;
-text-align:center;
-}
-
-/* Tombol */
 .stButton button{
-background: linear-gradient(
-90deg,
-#00B4DB,
-#0083B0
-)!important;
+background: #00B4DB;
+color: white;
+border-radius: 10px;
+height: 45px;
+width: 100%;
+}
+</style>
+""", unsafe_allow_html=True)
 
-color:white!important;
-font-size:18px!important;
-font-weight:bold!important;
-height:55px!important;
-border-radius:15px!important;
-border:none!important;
-transition:0.3s!important;
-width:100%;
+# ==================================
+# SIDEBAR MENU
+# ==================================
+st.sidebar.title("💧 AquaCheck")
+
+menu = st.sidebar.selectbox(
+    "Menu",
+    [
+        "🏠 Evaluasi Kualitas Air",
+        "📖 Baku Mutu Air Kelas I",
+        "📊 Interpretasi Parameter",
+        "📚 Dasar Hukum",
+        "👨‍💻 Tentang Pengembang"
+    ]
+)
+
+# ==================================
+# EVALUASI (VERSI DASAR)
+# ==================================
+if menu == "🏠 Evaluasi Kualitas Air":
+
+    st.title("💧 Evaluasi Kualitas Air")
+
+    ph = st.number_input("pH", 0.0, 14.0, 7.0)
+    bod = st.number_input("BOD (mg/L)", 0.0, 100.0, 2.0)
+    cod = st.number_input("COD (mg/L)", 0.0, 200.0, 10.0)
+    do = st.number_input("DO (mg/L)", 0.0, 20.0, 6.0)
+    tss = st.number_input("TSS (mg/L)", 0.0, 500.0, 40.0)
+    tds = st.number_input("TDS (mg/L)", 0.0, 5000.0, 1000.0)
+
+    if st.button("🔍 Analisis"):
+
+        if 6 <= ph <= 9 and bod <= 2 and cod <= 10 and do >= 6 and tss <= 40 and tds <= 1000:
+            st.success("💧 AIR LAYAK (Kelas I)")
+        else:
+            st.error("⚠️ AIR TIDAK LAYAK (Kelas I)")
+
+# ==================================
+# BAKU MUTU
+# ==================================
+elif menu == "📖 Baku Mutu Air Kelas I":
+
+    st.title("📖 Baku Mutu Air Kelas I")
+
+    df = pd.DataFrame({
+        "Parameter": ["pH","BOD","COD","DO","TSS","TDS"],
+        "Baku Mutu": ["6-9","≤2","≤10","≥6","≤40","≤1000"]
+    })
+
+    st.table(df)
+
+    st.info("Acuan: PP No. 22 Tahun 2021")
+
+# ==================================
+# INTERPRETASI
+# ==================================
+elif menu == "📊 Interpretasi Parameter":
+
+    st.title("📊 Interpretasi Parameter")
+
+    st.write("pH = tingkat keasaman air")
+    st.write("BOD = kebutuhan oksigen biologis")
+    st.write("COD = kebutuhan oksigen kimia")
+    st.write("DO = oksigen terlarut")
+    st.write("TSS = padatan tersuspensi")
+    st.write("TDS = zat terlarut total")
+
+# ==================================
+# DASAR HUKUM
+# ==================================
+elif menu == "📚 Dasar Hukum":
+
+    st.title("📚 Dasar Hukum")
+
+    st.success("Peraturan Pemerintah Republik Indonesia No. 22 Tahun 2021")
+
+    st.write("""
+    Air Kelas I adalah air yang dapat digunakan sebagai
+    air baku air minum dan kebutuhan lain dengan standar mutu tinggi.
+    """)
+
+# ==================================
+# TENTANG PENGEMBANG
+# ==================================
+elif menu == "👨‍💻 Tentang Pengembang":
+
+    st.title("👨‍💻 Tentang Pengembang")
+
+    st.info("Menu ini akan diisi data pengembang aplikasi")
+    import streamlit as st
+import pandas as pd
+
+# ==================================
+# CONFIG
+# ==================================
+st.set_page_config(
+    page_title="AquaCheck",
+    page_icon="💧",
+    layout="wide"
+)
+
+# ==================================
+# CSS SIMPLE
+# ==================================
+st.markdown("""
+<style>
+.stApp{
+background: linear-gradient(135deg,#E3F2FD,#F5FBFF);
 }
 
-.stButton button:hover{
-transform:scale(1.05);
-box-shadow:0px 10px 25px rgba(0,180,219,0.4);
+.stButton button{
+background: #00B4DB;
+color: white;
+border-radius: 10px;
+height: 45px;
+width: 100%;
 }
-
-/* Metric */
-[data-testid="stMetric"]{
-background:white;
-padding:15px;
-border-radius:15px;
-box-shadow:0px 2px 8px rgba(0,0,0,0.08);
-}
-
 </style>
 """, unsafe_allow_html=True)
 
 # ==================================
 # SIDEBAR
 # ==================================
+st.sidebar.title("💧 AquaCheck")
+
 menu = st.sidebar.selectbox(
-    "📂 Menu",
+    "Menu",
     [
         "🏠 Evaluasi Kualitas Air",
+        "📖 Baku Mutu Air Kelas I",
+        "📊 Interpretasi Parameter",
+        "📚 Dasar Hukum",
         "👨‍💻 Tentang Pengembang"
     ]
 )
 
 # ==================================
-# HALAMAN PENGEMBANG
+# EVALUASI 1B (UPGRADE)
 # ==================================
-if menu == "👨‍💻 Tentang Pengembang":
+if menu == "🏠 Evaluasi Kualitas Air":
 
-    st.markdown("""
-    <div class="glass">
-    <h1 style="text-align:center;">
-    👨‍💻 Tentang Pengembang
-    </h1>
-    </div>
-    """, unsafe_allow_html=True)
+    st.title("💧 Evaluasi Kualitas Air")
 
-    st.markdown("""
-    ### 💧 AquaCheck
+    ph = st.number_input("pH", 0.0, 14.0, 7.0)
+    bod = st.number_input("BOD (mg/L)", 0.0, 100.0, 2.0)
+    cod = st.number_input("COD (mg/L)", 0.0, 200.0, 10.0)
+    do = st.number_input("DO (mg/L)", 0.0, 20.0, 6.0)
+    tss = st.number_input("TSS (mg/L)", 0.0, 500.0, 40.0)
+    tds = st.number_input("TDS (mg/L)", 0.0, 5000.0, 1000.0)
 
-    AquaCheck merupakan aplikasi evaluasi kualitas air
-    berdasarkan Peraturan Pemerintah Nomor 22 Tahun 2021
-    untuk Air Kelas I.
-    """)
+    if st.button("🔍 Analisis"):
 
-    st.info("""
-    Mata Kuliah : Logika Pemrograman
+        hasil = {
+            "pH": 6 <= ph <= 9,
+            "BOD": bod <= 2,
+            "COD": cod <= 10,
+            "DO": do >= 6,
+            "TSS": tss <= 40,
+            "TDS": tds <= 1000
+        }
 
-    Program Studi : Pengelolaan Limbah Industri
+        total = len(hasil)
+        lulus = sum(hasil.values())
+        score = (lulus / total) * 100
 
-    Semester : II
+        st.subheader("📊 Hasil Evaluasi")
 
-    Tahun Akademik : 2026
+        for k, v in hasil.items():
+            if v:
+                st.success(f"{k} ✔ memenuhi")
+            else:
+                st.error(f"{k} ❌ tidak memenuhi")
 
-    Institusi : Akademi Kimia Analis Bogor
-    """)
+        st.metric("📊 Skor Kelayakan", f"{score:.0f}%")
 
-    st.subheader("👥 Tim Pengembang")
-
-    data_tim = {
-        "Nama": [
-            "Dela Rahayu Putri",
-            "Mutiara Shifwah A.",
-            "Putri Bilqis Aliyyu N.",
-            "Rae Putri Kavi",
-            "Salsabila Putri"
-        ],
-        "NIM": [
-            "2530606",
-            "2530640",
-            "2530647",
-            "2530648",
-            "2530650"
-        ]
-    }
-
-    st.table(pd.DataFrame(data_tim))
-
-    st.success("""
-    © 2026 AquaCheck Team
-
-    Hak cipta dimiliki oleh Tim AquaCheck
-    Program Studi Pengelolaan Limbah Industri.
-
-    Aplikasi ini dibuat untuk tujuan pendidikan
-    dan pengembangan akademik.
-    """)
-
-    st.stop()
+        if score == 100:
+            st.success("💧 AIR SANGAT LAYAK (Kelas I)")
+        elif score >= 70:
+            st.warning("⚠️ AIR KURANG LAYAK")
+        else:
+            st.error("🚨 AIR TIDAK LAYAK")
 
 # ==================================
-# HEADER
+# BAKU MUTU
+# ==================================
+elif menu == "📖 Baku Mutu Air Kelas I":
+
+    st.title("📖 Baku Mutu Air Kelas I")
+
+    df = pd.DataFrame({
+        "Parameter": ["pH","BOD","COD","DO","TSS","TDS"],
+        "Baku Mutu": ["6-9","≤2","≤10","≥6","≤40","≤1000"]
+    })
+
+    st.table(df)
+
+# ==================================
+# INTERPRETASI
+# ==================================
+elif menu == "📊 Interpretasi Parameter":
+
+    st.title("📊 Interpretasi Parameter")
+
+    st.write("pH = keasaman air")
+    st.write("BOD = kebutuhan oksigen biologis")
+    st.write("COD = kebutuhan oksigen kimia")
+    st.write("DO = oksigen terlarut")
+    st.write("TSS = padatan tersuspensi")
+    st.write("TDS = zat terlarut total")
+
+# ==================================
+# DASAR HUKUM
+# ==================================
+elif menu == "📚 Dasar Hukum":
+
+    st.title("📚 Dasar Hukum")
+
+    st.success("PP No. 22 Tahun 2021")
+
+    st.write("""
+    Air Kelas I digunakan sebagai air baku air minum
+    dan kebutuhan lain dengan standar mutu tinggi.
+    """)
+
+# ==================================
+# TENTANG PENGEMBANG
+# ==================================
+elif menu == "👨‍💻 Tentang Pengembang":
+
+    st.title("👨‍💻 Tentang Pengembang")
+
+    st.info("Menu ini akan diisi profil pengembang nanti")
+    import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+# ==================================
+# CONFIG
+# ==================================
+st.set_page_config(
+    page_title="AquaCheck",
+    page_icon="💧",
+    layout="wide"
+)
+
+# ==================================
+# SESSION STATE (RIWAYAT)
+# ==================================
+if "history" not in st.session_state:
+    st.session_state.history = []
+
+# ==================================
+# CSS SIMPLE
 # ==================================
 st.markdown("""
-<div class="glass" style="text-align:center;">
-<div class="hero-icon">💧</div>
+<style>
+.stApp{
+background: linear-gradient(135deg,#E3F2FD,#F5FBFF);
+}
 
-<h1 style="color:#1B4F72;">
-AquaCheck
-</h1>
-
-<h3 style="color:#2874A6;">
-Water Quality Assessment
-</h3>
-
-<p>
-Evaluasi Kualitas Air Kelas I
-Berdasarkan PP No. 22 Tahun 2021
-</p>
-
-</div>
+.stButton button{
+background: #00B4DB;
+color: white;
+border-radius: 10px;
+height: 45px;
+width: 100%;
+}
+</style>
 """, unsafe_allow_html=True)
 
-st.subheader(
-    "Acuan : Peraturan Pemerintah Nomor 22 Tahun 2021"
+# ==================================
+# SIDEBAR
+# ==================================
+st.sidebar.title("💧 AquaCheck")
+
+menu = st.sidebar.selectbox(
+    "Menu",
+    [
+        "🏠 Evaluasi Kualitas Air",
+        "📖 Baku Mutu Air Kelas I",
+        "📊 Interpretasi Parameter",
+        "📜 Riwayat Analisis",
+        "📚 Dasar Hukum",
+        "👨‍💻 Tentang Pengembang"
+    ]
 )
 
-st.write("""
-Aplikasi ini digunakan untuk mengevaluasi
-kualitas air terhadap baku mutu
-Air Kelas I.
-""")
+# ==================================
+# EVALUASI 1C
+# ==================================
+if menu == "🏠 Evaluasi Kualitas Air":
 
-st.divider()
+    st.title("💧 Evaluasi Kualitas Air")
+
+    ph = st.number_input("pH", 0.0, 14.0, 7.0)
+    bod = st.number_input("BOD (mg/L)", 0.0, 100.0, 2.0)
+    cod = st.number_input("COD (mg/L)", 0.0, 200.0, 10.0)
+    do = st.number_input("DO (mg/L)", 0.0, 20.0, 6.0)
+    tss = st.number_input("TSS (mg/L)", 0.0, 500.0, 40.0)
+    tds = st.number_input("TDS (mg/L)", 0.0, 5000.0, 1000.0)
+
+    if st.button("🔍 Analisis"):
+
+        hasil = {
+            "pH": 6 <= ph <= 9,
+            "BOD": bod <= 2,
+            "COD": cod <= 10,
+            "DO": do >= 6,
+            "TSS": tss <= 40,
+            "TDS": tds <= 1000
+        }
+
+        total = len(hasil)
+        lulus = sum(hasil.values())
+        score = (lulus / total) * 100
+
+        status = "LAYAK" if score == 100 else "TIDAK LAYAK"
+
+        # SIMPAN RIWAYAT
+        st.session_state.history.append({
+            "Waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "pH": ph,
+            "BOD": bod,
+            "COD": cod,
+            "DO": do,
+            "TSS": tss,
+            "TDS": tds,
+            "Skor": score,
+            "Status": status
+        })
+
+        st.subheader("📊 Hasil Evaluasi")
+
+        for k, v in hasil.items():
+            if v:
+                st.success(f"{k} ✔")
+            else:
+                st.error(f"{k} ❌")
+
+        st.metric("📊 Skor Kelayakan", f"{score:.0f}%")
+
+        if score == 100:
+            st.success("💧 AIR SANGAT LAYAK (Kelas I)")
+        else:
+            st.error("⚠️ AIR TIDAK LAYAK (Kelas I)")
+
+        # GRAFIK
+        st.subheader("📈 Grafik Kualitas Air")
+
+        labels = ["pH","BOD","COD","DO","TSS","TDS"]
+        values = [ph,bod,cod,do,tss,tds]
+
+        fig, ax = plt.subplots()
+        ax.bar(labels, values)
+        st.pyplot(fig)
 
 # ==================================
-# INPUT DATA
+# RIWAYAT
 # ==================================
-st.markdown('<div class="glass">', unsafe_allow_html=True)
+elif menu == "📜 Riwayat Analisis":
 
-st.header("📋 Input Data Sampel")
+    st.title("📜 Riwayat Analisis")
 
-nama_sampel = st.text_input(
-    "Nama Sampel",
-    placeholder="Contoh: Sungai Ciliwung Titik 1"
+    if len(st.session_state.history) == 0:
+        st.warning("Belum ada data analisis")
+    else:
+        df = pd.DataFrame(st.session_state.history)
+        st.dataframe(df)
+
+        csv = df.to_csv(index=False).encode("utf-8")
+
+        st.download_button(
+            "⬇ Download CSV",
+            csv,
+            "riwayat_aquacheck.csv",
+            "text/csv"
+        )
+
+# ==================================
+# BAKU MUTU
+# ==================================
+elif menu == "📖 Baku Mutu Air Kelas I":
+
+    st.title("📖 Baku Mutu Air Kelas I")
+
+    st.table(pd.DataFrame({
+        "Parameter": ["pH","BOD","COD","DO","TSS","TDS"],
+        "Baku Mutu": ["6-9","≤2","≤10","≥6","≤40","≤1000"]
+    }))
+
+# ==================================
+# INTERPRETASI
+# ==================================
+elif menu == "📊 Interpretasi Parameter":
+
+    st.title("📊 Interpretasi Parameter")
+
+    st.write("pH = keasaman air")
+    st.write("BOD = kebutuhan oksigen biologis")
+    st.write("COD = kebutuhan oksigen kimia")
+    st.write("DO = oksigen terlarut")
+    st.write("TSS = padatan tersuspensi")
+    st.write("TDS = zat terlarut total")
+
+# ==================================
+# DASAR HUKUM
+# ==================================
+elif menu == "📚 Dasar Hukum":
+
+    st.title("📚 Dasar Hukum")
+
+    st.success("PP No. 22 Tahun 2021")
+
+# ==================================
+# TENTANG PENGEMBANG
+# ==================================
+elif menu == "👨‍💻 Tentang Pengembang":
+
+    st.title("👨‍💻 Tentang Pengembang")
+    st.info("Profil pengembang akan ditambahkan nanti")
+    import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+from io import BytesIO
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib import colors
+
+# ==================================
+# CONFIG
+# ==================================
+st.set_page_config(
+    page_title="AquaCheck",
+    page_icon="💧",
+    layout="wide"
 )
 
-col1, col2 = st.columns(2)
+# ==================================
+# SESSION STATE
+# ==================================
+if "history" not in st.session_state:
+    st.session_state.history = []
 
-with col1:
+# ==================================
+# PDF FUNCTION
+# ==================================
+def generate_pdf(data):
 
-    ph = st.number_input(
-        "pH",
-        min_value=0.0,
-        max_value=14.0,
-        value=7.0,
-        step=0.1
-    )
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer)
 
-    bod = st.number_input(
-        "BOD (mg/L)",
-        min_value=0.0,
-        value=1.0,
-        step=0.1
-    )
+    styles = getSampleStyleSheet()
+    elements = []
 
-    cod = st.number_input(
-        "COD (mg/L)",
-        min_value=0.0,
-        value=5.0,
-        step=0.1
-    )
+    elements.append(Paragraph("AQUACHECK - LAPORAN ANALISIS KUALITAS AIR", styles["Title"]))
+    elements.append(Spacer(1, 12))
 
-with col2:
+    table_data = [["Parameter", "Nilai"]]
 
-    do = st.number_input(
-        "DO (mg/L)",
-        min_value=0.0,
-        value=7.0,
-        step=0.1
-    )
+    for k in ["pH","BOD","COD","DO","TSS","TDS"]:
+        table_data.append([k, str(data[k])])
 
-    tss = st.number_input(
-        "TSS (mg/L)",
-        min_value=0.0,
-        value=20.0,
-        step=0.1
-    )
+    table_data.append(["Skor", f"{data['Skor']:.0f}%"])
+    table_data.append(["Status", data["Status"]])
+    table_data.append(["Waktu", data["Waktu"]])
 
-    tds = st.number_input(
-        "TDS (mg/L)",
-        min_value=0.0,
-        value=500.0,
-        step=1.0
-    )
+    table = Table(table_data)
 
-st.markdown("</div>", unsafe_allow_html=True)
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0,0), (-1,0), colors.lightblue),
+        ("GRID", (0,0), (-1,-1), 0.5, colors.grey),
+        ("PADDING", (0,0), (-1,-1), 6)
+    ]))
+
+    elements.append(table)
+
+    doc.build(elements)
+    buffer.seek(0)
+    return buffer
+
+# ==================================
+# CSS
+# ==================================
+st.markdown("""
+<style>
+.stApp{
+background: linear-gradient(135deg,#E3F2FD,#F5FBFF);
+}
+
+.stButton button{
+background: #00B4DB;
+color: white;
+border-radius: 10px;
+height: 45px;
+width: 100%;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ==================================
+# SIDEBAR
+# ==================================
+st.sidebar.title("💧 AquaCheck")
+
+menu = st.sidebar.selectbox(
+    "Menu",
+    [
+        "🏠 Evaluasi Kualitas Air",
+        "📖 Baku Mutu Air Kelas I",
+        "📊 Interpretasi Parameter",
+        "📜 Riwayat Analisis",
+        "📚 Dasar Hukum",
+        "👨‍💻 Tentang Pengembang"
+    ]
+)
 
 # ==================================
 # EVALUASI
 # ==================================
-if st.button("🔍 Evaluasi Kualitas Air"):
+if menu == "🏠 Evaluasi Kualitas Air":
 
-    hasil = []
+    st.title("💧 Evaluasi Kualitas Air")
 
-    hasil.append([
-        "pH",
-        ph,
-        "6 - 9",
-        "✅ Memenuhi" if 6 <= ph <= 9 else "❌ Tidak Memenuhi"
-    ])
+    ph = st.number_input("pH", 0.0, 14.0, 7.0)
+    bod = st.number_input("BOD", 0.0, 100.0, 2.0)
+    cod = st.number_input("COD", 0.0, 200.0, 10.0)
+    do = st.number_input("DO", 0.0, 20.0, 6.0)
+    tss = st.number_input("TSS", 0.0, 500.0, 40.0)
+    tds = st.number_input("TDS", 0.0, 5000.0, 1000.0)
 
-    hasil.append([
-        "BOD",
-        bod,
-        "≤ 2",
-        "✅ Memenuhi" if bod <= 2 else "❌ Tidak Memenuhi"
-    ])
+    if st.button("🔍 Analisis"):
 
-    hasil.append([
-        "COD",
-        cod,
-        "≤ 10",
-        "✅ Memenuhi" if cod <= 10 else "❌ Tidak Memenuhi"
-    ])
+        hasil = {
+            "pH": 6 <= ph <= 9,
+            "BOD": bod <= 2,
+            "COD": cod <= 10,
+            "DO": do >= 6,
+            "TSS": tss <= 40,
+            "TDS": tds <= 1000
+        }
 
-    hasil.append([
-        "DO",
-        do,
-        "≥ 6",
-        "✅ Memenuhi" if do >= 6 else "❌ Tidak Memenuhi"
-    ])
+        total = len(hasil)
+        lulus = sum(hasil.values())
+        score = (lulus / total) * 100
 
-    hasil.append([
-        "TSS",
-        tss,
-        "≤ 40",
-        "✅ Memenuhi" if tss <= 40 else "❌ Tidak Memenuhi"
-    ])
+        status = "LAYAK" if score == 100 else "TIDAK LAYAK"
 
-    hasil.append([
-        "TDS",
-        tds,
-        "≤ 1000",
-        "✅ Memenuhi" if tds <= 1000 else "❌ Tidak Memenuhi"
-    ])
+        data = {
+            "Waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "pH": ph,
+            "BOD": bod,
+            "COD": cod,
+            "DO": do,
+            "TSS": tss,
+            "TDS": tds,
+            "Skor": score,
+            "Status": status
+        }
 
-    df = pd.DataFrame(
-        hasil,
-        columns=[
-            "Parameter",
-            "Hasil",
-            "Baku Mutu",
-            "Status"
-        ]
-    )
+        st.session_state.history.append(data)
 
-    st.divider()
+        st.subheader("📊 Hasil")
 
-    st.header("📊 Hasil Evaluasi")
+        for k, v in hasil.items():
+            if v:
+                st.success(f"{k} ✔")
+            else:
+                st.error(f"{k} ❌")
 
-    st.dataframe(
-        df,
-        use_container_width=True
-    )
+        st.metric("Skor", f"{score:.0f}%")
 
-    jumlah_memenuhi = (
-        df["Status"] == "✅ Memenuhi"
-    ).sum()
+        if score == 100:
+            st.success("💧 AIR SANGAT LAYAK")
+        else:
+            st.error("⚠️ AIR TIDAK LAYAK")
 
-    jumlah_tidak = (
-        df["Status"] == "❌ Tidak Memenuhi"
-    ).sum()
+        # GRAFIK
+        st.subheader("📈 Grafik")
 
-    persentase = (
-        jumlah_memenuhi / len(df)
-    ) * 100
+        labels = ["pH","BOD","COD","DO","TSS","TDS"]
+        values = [ph,bod,cod,do,tss,tds]
 
-    col1, col2, col3 = st.columns(3)
+        fig, ax = plt.subplots()
+        ax.bar(labels, values)
+        st.pyplot(fig)
 
-    with col1:
-        st.metric(
-            "✅ Memenuhi",
-            jumlah_memenuhi
+        # PDF DOWNLOAD
+        pdf = generate_pdf(data)
+
+        st.download_button(
+            "📄 Download PDF Laporan",
+            pdf,
+            file_name="AquaCheck_Laporan.pdf",
+            mime="application/pdf"
         )
 
-    with col2:
-        st.metric(
-            "❌ Tidak Memenuhi",
-            jumlah_tidak
-        )
+# ==================================
+# RIWAYAT
+# ==================================
+elif menu == "📜 Riwayat Analisis":
 
-    with col3:
-        st.metric(
-            "📈 Kepatuhan",
-            f"{persentase:.1f}%"
-        )
+    st.title("📜 Riwayat Analisis")
 
-    st.subheader("📈 Tingkat Kepatuhan")
-
-    st.progress(int(persentase))
-
-    st.subheader("📋 Ringkasan Parameter")
-
-    c1, c2, c3 = st.columns(3)
-
-    with c1:
-        st.metric("pH", ph)
-        st.metric("BOD", f"{bod} mg/L")
-
-    with c2:
-        st.metric("COD", f"{cod} mg/L")
-        st.metric("DO", f"{do} mg/L")
-
-    with c3:
-        st.metric("TSS", f"{tss} mg/L")
-        st.metric("TDS", f"{tds} mg/L")
-
-    st.divider()
-
-    st.header("📝 Kesimpulan")
-
-    if jumlah_tidak == 0:
-
-        st.balloons()
-
-        st.success(
-            f"Sampel '{nama_sampel}' MEMENUHI "
-            "Baku Mutu Air Kelas I."
-        )
-
+    if len(st.session_state.history) == 0:
+        st.warning("Belum ada data")
     else:
+        df = pd.DataFrame(st.session_state.history)
+        st.dataframe(df)
 
-        st.error(
-            f"Sampel '{nama_sampel}' TIDAK MEMENUHI "
-            "Baku Mutu Air Kelas I."
+        st.download_button(
+            "⬇ Download CSV",
+            df.to_csv(index=False),
+            "riwayat.csv"
         )
 
-        gagal = df[
-            df["Status"].str.contains("Tidak")
-        ]["Parameter"].tolist()
+# ==================================
+# BAKU MUTU
+# ==================================
+elif menu == "📖 Baku Mutu Air Kelas I":
 
-        st.warning(
-            "Parameter yang tidak memenuhi: "
-            + ", ".join(gagal)
+    st.title("📖 Baku Mutu")
+
+    st.table(pd.DataFrame({
+        "Parameter":["pH","BOD","COD","DO","TSS","TDS"],
+        "Baku Mutu":["6-9","≤2","≤10","≥6","≤40","≤1000"]
+    }))
+
+# ==================================
+# INTERPRETASI
+# ==================================
+elif menu == "📊 Interpretasi Parameter":
+
+    st.title("📊 Interpretasi")
+
+    st.write("pH = keasaman air")
+    st.write("BOD = kebutuhan oksigen biologis")
+    st.write("COD = kebutuhan oksigen kimia")
+    st.write("DO = oksigen terlarut")
+    st.write("TSS = padatan tersuspensi")
+    st.write("TDS = zat terlarut total")
+
+# ==================================
+# DASAR HUKUM
+# ==================================
+elif menu == "📚 Dasar Hukum":
+
+    st.title("📚 Dasar Hukum")
+
+    st.success("PP No. 22 Tahun 2021")
+
+# ==================================
+# TENTANG PENGEMBANG
+# ==================================
+elif menu == "👨‍💻 Tentang Pengembang":
+
+    st.title("👨‍💻 Tentang Pengembang")
+
+    st.info("Profil pengembang akan ditambahkan nanti")
+    import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+from datetime import datetime
+from io import BytesIO
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib import colors
+
+# ==================================
+# CONFIG
+# ==================================
+st.set_page_config(
+    page_title="AquaCheck",
+    page_icon="💧",
+    layout="wide"
+)
+
+# ==================================
+# SESSION STATE
+# ==================================
+if "history" not in st.session_state:
+    st.session_state.history = []
+
+# ==================================
+# PDF FUNCTION
+# ==================================
+def generate_pdf(data):
+
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer)
+
+    styles = getSampleStyleSheet()
+    elements = []
+
+    elements.append(Paragraph("AQUACHECK - LAPORAN ANALISIS KUALITAS AIR", styles["Title"]))
+    elements.append(Spacer(1, 12))
+
+    table_data = [["Parameter", "Nilai"]]
+
+    for k in ["pH","BOD","COD","DO","TSS","TDS"]:
+        table_data.append([k, str(data[k])])
+
+    table_data.append(["Skor", f"{data['Skor']:.0f}%"])
+    table_data.append(["Status", data["Status"]])
+    table_data.append(["Waktu", data["Waktu"]])
+
+    table = Table(table_data)
+    table.setStyle(TableStyle([
+        ("BACKGROUND",(0,0),(-1,0),colors.lightblue),
+        ("GRID",(0,0),(-1,-1),0.5,colors.grey),
+        ("PADDING",(0,0),(-1,-1),6)
+    ]))
+
+    elements.append(table)
+
+    doc.build(elements)
+    buffer.seek(0)
+    return buffer
+
+# ==================================
+# UI STYLE AESTHETIC
+# ==================================
+st.markdown("""
+<style>
+.stApp{
+background: linear-gradient(135deg,#E3F2FD,#F5FBFF,#E0F7FA);
+}
+
+.header{
+text-align:center;
+padding:20px;
+background:white;
+border-radius:20px;
+box-shadow:0px 6px 20px rgba(0,0,0,0.1);
+margin-bottom:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0px 4px 15px rgba(0,0,0,0.08);
+margin-top:15px;
+}
+
+.stButton button{
+background: linear-gradient(90deg,#00B4DB,#0083B0)!important;
+color:white!important;
+border-radius:12px;
+height:50px;
+width:100%;
+font-size:16px!important;
+font-weight:bold;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ==================================
+# HEADER (LOGO + TITLE)
+# ==================================
+st.markdown("""
+<div class="header">
+    <h1>💧 AQUACHECK</h1>
+    <p>Sistem Evaluasi Kualitas Air Berbasis PP No. 22 Tahun 2021</p>
+</div>
+""", unsafe_allow_html=True)
+
+# ==================================
+# SIDEBAR
+# ==================================
+st.sidebar.title("💧 AquaCheck")
+
+menu = st.sidebar.selectbox(
+    "Menu",
+    [
+        "🏠 Evaluasi Kualitas Air",
+        "📖 Baku Mutu Air Kelas I",
+        "📊 Interpretasi Parameter",
+        "📜 Riwayat Analisis",
+        "📚 Dasar Hukum",
+        "👨‍💻 Tentang Pengembang"
+    ]
+)
+
+# ==================================
+# EVALUASI
+# ==================================
+if menu == "🏠 Evaluasi Kualitas Air":
+
+    st.title("🏠 Evaluasi Kualitas Air")
+
+    ph = st.number_input("pH", 0.0, 14.0, 7.0)
+    bod = st.number_input("BOD (mg/L)", 0.0, 100.0, 2.0)
+    cod = st.number_input("COD (mg/L)", 0.0, 200.0, 10.0)
+    do = st.number_input("DO (mg/L)", 0.0, 20.0, 6.0)
+    tss = st.number_input("TSS (mg/L)", 0.0, 500.0, 40.0)
+    tds = st.number_input("TDS (mg/L)", 0.0, 5000.0, 1000.0)
+
+    if st.button("🔍 Analisis Kualitas Air"):
+
+        hasil = {
+            "pH": 6 <= ph <= 9,
+            "BOD": bod <= 2,
+            "COD": cod <= 10,
+            "DO": do >= 6,
+            "TSS": tss <= 40,
+            "TDS": tds <= 1000
+        }
+
+        total = len(hasil)
+        lulus = sum(hasil.values())
+        score = (lulus / total) * 100
+
+        status = "LAYAK" if score == 100 else "TIDAK LAYAK"
+
+        data = {
+            "Waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "pH": ph,
+            "BOD": bod,
+            "COD": cod,
+            "DO": do,
+            "TSS": tss,
+            "TDS": tds,
+            "Skor": score,
+            "Status": status
+        }
+
+        st.session_state.history.append(data)
+
+        # ==========================
+        # HASIL CARD
+        # ==========================
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+
+        st.subheader("📊 Hasil Evaluasi")
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.metric("Skor Kelayakan", f"{score:.0f}%")
+
+        with col2:
+            if score == 100:
+                st.success("LAYAK")
+            elif score >= 70:
+                st.warning("KURANG")
+            else:
+                st.error("TIDAK LAYAK")
+
+        with col3:
+            st.info("PP 22/2021")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        # DETAIL PARAMETER
+        st.subheader("📌 Detail Parameter")
+
+        for k, v in hasil.items():
+            if v:
+                st.success(f"{k} ✔ memenuhi")
+            else:
+                st.error(f"{k} ❌ tidak memenuhi")
+
+        # GRAFIK
+        st.subheader("📈 Grafik Kualitas Air")
+
+        labels = ["pH","BOD","COD","DO","TSS","TDS"]
+        values = [ph,bod,cod,do,tss,tds]
+
+        fig, ax = plt.subplots()
+        ax.plot(labels, values, marker="o")
+        ax.set_title("Profil Kualitas Air")
+        st.pyplot(fig)
+
+        # PDF DOWNLOAD
+        pdf = generate_pdf(data)
+
+        st.download_button(
+            "📄 Download PDF Laporan",
+            pdf,
+            file_name="AquaCheck_Laporan.pdf",
+            mime="application/pdf"
         )
 
-    st.divider()
+# ==================================
+# RIWAYAT
+# ==================================
+elif menu == "📜 Riwayat Analisis":
 
-    st.caption(
-        "© 2026 AquaCheck Team | Akademi Kimia Analis Bogor"
-    )
+    st.title("📜 Riwayat Analisis")
+
+    if len(st.session_state.history) == 0:
+        st.warning("Belum ada data analisis")
+    else:
+        df = pd.DataFrame(st.session_state.history)
+        st.dataframe(df)
+
+        st.download_button(
+            "⬇ Download CSV",
+            df.to_csv(index=False),
+            "riwayat.csv"
+        )
+
+# ==================================
+# BAKU MUTU
+# ==================================
+elif menu == "📖 Baku Mutu Air Kelas I":
+
+    st.title("📖 Baku Mutu Air Kelas I")
+
+    st.table(pd.DataFrame({
+        "Parameter":["pH","BOD","COD","DO","TSS","TDS"],
+        "Baku Mutu":["6-9","≤2","≤10","≥6","≤40","≤1000"]
+    }))
+
+# ==================================
+# INTERPRETASI
+# ==================================
+elif menu == "📊 Interpretasi Parameter":
+
+    st.title("📊 Interpretasi Parameter")
+
+    st.info("pH = tingkat keasaman air")
+    st.info("BOD = kebutuhan oksigen biologis")
+    st.info("COD = kebutuhan oksigen kimia")
+    st.info("DO = oksigen terlarut")
+    st.info("TSS = padatan tersuspensi")
+    st.info("TDS = zat terlarut total")
+
+# ==================================
+# DASAR HUKUM
+# ==================================
+elif menu == "📚 Dasar Hukum":
+
+    st.title("📚 Dasar Hukum")
+
+    st.success("PP No. 22 Tahun 2021")
+    
+# ==================================
+# TENTANG PENGEMBANG
+# ==================================
+elif menu == "👨‍💻 Tentang Pengembang":
+
+    st.title("👨‍💻 Tentang Pengembang")
+
+    st.markdown("""
+    <div style="
+        background:white;
+        padding:25px;
+        border-radius:20px;
+        box-shadow:0px 6px 20px rgba(0,0,0,0.1);
+    ">
+
+    <h3>💧 AquaCheck Project Team</h3>
+
+    <p><b>Program Studi:</b> Pengolahan Limbah Industri</p>
+    <p><b>Semester:</b> 2</p>
+    <p><b>Instansi:</b> AKA Bogor</p>
+    <p><b>Angkatan:</b> 11</p>
+    <p><b>Tahun:</b> 2026</p>
+
+    <hr>
+
+    <h4>👥 Tim Pengembang</h4>
+
+    <ul>
+        <li>Dela Rahayu Putri (2530606)</li>
+        <li>Mutiara Shifwah A (2530640)</li>
+        <li>Putri Bilqis Aliyyu N (2530647)</li>
+        <li>Rae Putri Kavi (2530648)</li>
+        <li>Salsabila Putri (2530650)</li>
+    </ul>
+
+    </div>
+    """, unsafe_allow_html=True)

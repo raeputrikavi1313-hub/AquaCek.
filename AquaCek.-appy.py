@@ -347,90 +347,223 @@ def evaluasi():
 # BAKU MUTU
 # =========================
 def baku_mutu():
-
     st.markdown("""
     <div class="glass">
     <h1 style="text-align:center;">
     📋 Baku Mutu Air Kelas I
     </h1>
 
-    <p style="text-align:center;">
-    Berdasarkan PP No. 22 Tahun 2021
-    </p>
+    <h4 style="text-align:center;">
+    💧 Berdasarkan PP Nomor 22 Tahun 2021
+    </h4>
 
     </div>
     """, unsafe_allow_html=True)
 
     st.info("""
-💧 Air Kelas I merupakan air yang dapat digunakan
-sebagai air baku air minum dan peruntukan lain
-yang mensyaratkan mutu air yang sama.
+🌊 Air Kelas I merupakan air yang peruntukannya dapat digunakan
+sebagai air baku air minum dan peruntukan lain yang mensyaratkan
+mutu air yang sama.
 """)
 
+    # PH
     st.markdown("""
     <div class="bm-card bm-blue">
-    <h2>⚖️ pH</h2>
-    <h3>6 - 9</h3>
-    <p>Menunjukkan tingkat keasaman air.</p>
+
+    <h2 style="text-align:center;">⚖️ pH</h2>
+
+    <h1 style="text-align:center;">6 – 9</h1>
+
+    <p style="text-align:justify;">
+
+    ✅ <b>Memenuhi</b><br>
+    Nilai pH berada pada rentang 6–9 sehingga kondisi air masih
+    mendukung kehidupan organisme akuatik dan sesuai dengan
+    baku mutu Air Kelas I.
+
+    <br><br>
+
+    ❌ <b>Tidak Memenuhi</b><br>
+    Jika pH kurang dari 6 maka air bersifat terlalu asam.
+    Jika pH lebih dari 9 maka air bersifat terlalu basa.
+
+    <br><br>
+
+    ⚠️ <b>Dampak</b><br>
+    Dapat mengganggu kehidupan biota air serta mempengaruhi
+    berbagai proses kimia yang terjadi di perairan.
+
+    </p>
+
     </div>
     """, unsafe_allow_html=True)
 
+    # BOD
     st.markdown("""
     <div class="bm-card bm-orange">
-    <h2>🍂 BOD</h2>
-    <h3>≤ 2 mg/L</h3>
-    <p>Beban pencemar organik.</p>
+
+    <h2 style="text-align:center;">🍂 BOD</h2>
+
+    <h1 style="text-align:center;">≤ 2 mg/L</h1>
+
+    <p style="text-align:justify;">
+
+    ✅ <b>Memenuhi</b><br>
+    Menunjukkan kandungan bahan organik dalam air masih rendah
+    dan belum menyebabkan penurunan kualitas air yang signifikan.
+
+    <br><br>
+
+    ❌ <b>Tidak Memenuhi</b><br>
+    Nilai BOD melebihi 2 mg/L.
+
+    <br><br>
+
+    ⚠️ <b>Dampak</b><br>
+    Semakin tinggi BOD maka semakin banyak oksigen yang digunakan
+    mikroorganisme untuk menguraikan bahan organik sehingga
+    oksigen terlarut dapat berkurang.
+
+    </p>
+
     </div>
     """, unsafe_allow_html=True)
 
+    # COD
     st.markdown("""
     <div class="bm-card bm-purple">
-    <h2>⚗️ COD</h2>
-    <h3>≤ 10 mg/L</h3>
-    <p>Beban pencemar kimia.</p>
+
+    <h2 style="text-align:center;">⚗️ COD</h2>
+
+    <h1 style="text-align:center;">≤ 10 mg/L</h1>
+
+    <p style="text-align:justify;">
+
+    ✅ <b>Memenuhi</b><br>
+    Menunjukkan kandungan pencemar kimia masih berada dalam
+    batas yang diperbolehkan.
+
+    <br><br>
+
+    ❌ <b>Tidak Memenuhi</b><br>
+    Nilai COD melebihi 10 mg/L.
+
+    <br><br>
+
+    ⚠️ <b>Dampak</b><br>
+    Menunjukkan adanya beban pencemar kimia yang tinggi
+    sehingga kualitas air dapat menurun.
+
+    </p>
+
     </div>
     """, unsafe_allow_html=True)
 
+    # DO
     st.markdown("""
     <div class="bm-card bm-green">
-    <h2>🐟 DO</h2>
-    <h3>≥ 6 mg/L</h3>
-    <p>Oksigen terlarut dalam air.</p>
+
+    <h2 style="text-align:center;">🐟 DO</h2>
+
+    <h1 style="text-align:center;">≥ 6 mg/L</h1>
+
+    <p style="text-align:justify;">
+
+    ✅ <b>Memenuhi</b><br>
+    Oksigen terlarut cukup untuk mendukung kehidupan ikan,
+    plankton, dan organisme perairan lainnya.
+
+    <br><br>
+
+    ❌ <b>Tidak Memenuhi</b><br>
+    Nilai DO kurang dari 6 mg/L.
+
+    <br><br>
+
+    ⚠️ <b>Dampak</b><br>
+    Organisme perairan dapat mengalami stres bahkan kematian
+    akibat kekurangan oksigen.
+
+    </p>
+
     </div>
     """, unsafe_allow_html=True)
 
+    # TSS
     st.markdown("""
     <div class="bm-card bm-brown">
-    <h2>🌫️ TSS</h2>
-    <h3>≤ 40 mg/L</h3>
-    <p>Padatan tersuspensi.</p>
+
+    <h2 style="text-align:center;">🌫️ TSS</h2>
+
+    <h1 style="text-align:center;">≤ 40 mg/L</h1>
+
+    <p style="text-align:justify;">
+
+    ✅ <b>Memenuhi</b><br>
+    Jumlah partikel tersuspensi masih rendah sehingga air
+    relatif lebih jernih.
+
+    <br><br>
+
+    ❌ <b>Tidak Memenuhi</b><br>
+    Nilai TSS melebihi 40 mg/L.
+
+    <br><br>
+
+    ⚠️ <b>Dampak</b><br>
+    Kekeruhan meningkat dan cahaya matahari yang masuk ke
+    perairan menjadi berkurang.
+
+    </p>
+
     </div>
     """, unsafe_allow_html=True)
 
+    # TDS
     st.markdown("""
     <div class="bm-card bm-gray">
-    <h2>🧂 TDS</h2>
-    <h3>≤ 1000 mg/L</h3>
-    <p>Padatan terlarut.</p>
+
+    <h2 style="text-align:center;">🧂 TDS</h2>
+
+    <h1 style="text-align:center;">≤ 1000 mg/L</h1>
+
+    <p style="text-align:justify;">
+
+    ✅ <b>Memenuhi</b><br>
+    Jumlah zat terlarut masih berada dalam batas aman
+    sesuai baku mutu Air Kelas I.
+
+    <br><br>
+
+    ❌ <b>Tidak Memenuhi</b><br>
+    Nilai TDS melebihi 1000 mg/L.
+
+    <br><br>
+
+    ⚠️ <b>Dampak</b><br>
+    Dapat mempengaruhi rasa, kualitas, dan pemanfaatan air
+    untuk berbagai kebutuhan.
+
+    </p>
+
     </div>
     """, unsafe_allow_html=True)
 
     st.success("""
-🎯 Ringkasan Cepat
+🎯 Ringkasan Baku Mutu Air Kelas I
 
-💙 pH = 6–9
+⚖️ pH : 6–9
 
-🧡 BOD = ≤ 2 mg/L
+🍂 BOD : ≤ 2 mg/L
 
-💜 COD = ≤ 10 mg/L
+⚗️ COD : ≤ 10 mg/L
 
-💚 DO = ≥ 6 mg/L
+🐟 DO : ≥ 6 mg/L
 
-🤎 TSS = ≤ 40 mg/L
+🌫️ TSS : ≤ 40 mg/L
 
-🩶 TDS = ≤ 1000 mg/L
+🧂 TDS : ≤ 1000 mg/L
 """)
-
 # =========================
 # INTERPRETASI
 # =========================

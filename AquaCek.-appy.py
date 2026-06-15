@@ -434,73 +434,120 @@ def hukum():
 # PENGEMBANG
 # =========================
 def pengembang():
-st.markdown("""
-<div class="glass">
 
-<div style="text-align:center;">
+    # Balon hanya muncul saat menu Pengembang dibuka
+    st.balloons()
 
-<h1>🏫 AKA BOGOR</h1>
+    st.markdown("""
+    <div class="glass">
 
-<h2>💧 AquaCek Development Team</h2>
+    <div style="text-align:center;">
 
-<hr>
+    <h1>🏫 AKA BOGOR</h1>
 
-<h3>🎓 Tugas Akhir Mata Kuliah Logika Pemrograman</h3>
+    <h2>💧 AquaCek Development Team</h2>
 
-<h3>🧪 Program Studi Pengelolaan Limbah Industri</h3>
+    <hr>
 
-<h3>📚 Semester II • Tahun Akademik 2026</h3>
+    <h3>🎓 Tugas Akhir Mata Kuliah Logika Pemrograman</h3>
 
-</div>
+    <h3>🧪 Program Studi Pengelolaan Limbah Industri</h3>
 
-</div>
-""", unsafe_allow_html=True)
+    <h3>📚 Semester II • Tahun Akademik 2026</h3>
+
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("## 👥 Tim Pengembang")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.markdown("""
+        <div class="glass">
+        <h3>🧪 Dela Rahayu Putri</h3>
+        <p><b>NIM :</b> 2530606</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="glass">
+        <h3>🔬 Putri Bilqis Aliyyu N</h3>
+        <p><b>NIM :</b> 2530647</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="glass">
+        <h3>🧫 Salsabila Putri</h3>
+        <p><b>NIM :</b> 2530650</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+
+        st.markdown("""
+        <div class="glass">
+        <h3>⚙️ Mutiara Shifwah A</h3>
+        <p><b>NIM :</b> 2530640</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="glass">
+        <h3>💻 Rae Putri Kavi</h3>
+        <p><b>NIM :</b> 2530648</p>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.markdown("---")
 
-st.markdown("""
-<div class="glass">
+    st.markdown("""
+    <div class="glass">
 
-<h2>💙 Tentang AquaCek</h2>
+    <h2>💙 Tentang AquaCek</h2>
 
-<p style="font-size:17px; text-align:justify;">
+    <p style="text-align:justify; font-size:17px;">
 
-AquaCek merupakan aplikasi evaluasi kualitas air yang
-dirancang untuk membantu pengguna dalam membandingkan
-hasil pengujian kualitas air dengan baku mutu Air Kelas I
-berdasarkan Peraturan Pemerintah Nomor 22 Tahun 2021.
+    AquaCek merupakan aplikasi evaluasi kualitas air yang
+    dirancang untuk membantu pengguna dalam membandingkan
+    hasil pengujian kualitas air dengan baku mutu Air Kelas I
+    berdasarkan Peraturan Pemerintah Nomor 22 Tahun 2021.
 
-</p>
+    </p>
 
-<p style="font-size:17px; text-align:justify;">
+    <p style="text-align:justify; font-size:17px;">
 
-Aplikasi ini mampu melakukan evaluasi terhadap parameter
-kualitas air seperti pH, BOD, COD, DO, TSS, dan TDS serta
-menyajikan interpretasi parameter secara interaktif sehingga
-lebih mudah dipahami oleh pengguna.
+    Aplikasi ini mampu melakukan evaluasi terhadap parameter
+    kualitas air seperti pH, BOD, COD, DO, TSS, dan TDS serta
+    menyajikan interpretasi parameter secara interaktif sehingga
+    lebih mudah dipahami oleh pengguna.
 
-</p>
+    </p>
 
-<p style="font-size:17px; text-align:justify;">
+    <p style="text-align:justify; font-size:17px;">
 
-AquaCek dikembangkan sebagai proyek Tugas Akhir Mata Kuliah
-Logika Pemrograman oleh mahasiswa Program Studi Pengelolaan
-Limbah Industri Semester II Angkatan XI Tahun 2026
-Akademi Kimia Analis Bogor.
+    AquaCek dikembangkan sebagai proyek Tugas Akhir Mata Kuliah
+    Logika Pemrograman oleh mahasiswa Program Studi Pengelolaan
+    Limbah Industri Semester II Angkatan XI Tahun 2026
+    Akademi Kimia Analis Bogor.
 
-</p>
+    </p>
 
-<p style="font-size:17px; text-align:justify;">
+    <p style="text-align:justify; font-size:17px;">
 
-Melalui tampilan yang informatif, interaktif, dan edukatif,
-AquaCek diharapkan dapat membantu proses pembelajaran,
-praktikum, serta pemahaman mengenai evaluasi kualitas air
-sesuai peraturan yang berlaku di Indonesia.
+    Melalui tampilan yang informatif, interaktif, dan edukatif,
+    AquaCek diharapkan dapat membantu proses pembelajaran,
+    praktikum, serta pemahaman mengenai evaluasi kualitas air
+    sesuai peraturan yang berlaku di Indonesia.
 
-</p>
+    </p>
 
-</div>
-""", unsafe_allow_html=True)
-st.balloons()
+    </div>
+    """, unsafe_allow_html=True)
 # =========================
 # RIWAYAT
 # =========================

@@ -369,20 +369,27 @@ def evaluasi():
 st.markdown("""
 <div class="glass">
 
-<div style="text-align:center;">
+<div style="
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+">
 
 <h1 style="
+text-align:center;
+font-size:60px;
 margin-bottom:5px;
 ">
 📋 Baku Mutu Air Kelas I
 </h1>
 
 <p style="
+text-align:center;
 font-size:24px;
 font-weight:bold;
 color:#2874A6;
 margin-top:0px;
-margin-bottom:10px;
 ">
 💧 Berdasarkan PP Nomor 22 Tahun 2021
 </p>

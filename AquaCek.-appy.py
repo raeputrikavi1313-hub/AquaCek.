@@ -491,34 +491,56 @@ def pengembang():
         <h4>🎓 NIM : 2530648</h4>
         </div>
         """, unsafe_allow_html=True)
+st.markdown("""
+<div class="glass">
+<div style="text-align:center;">
 
-    st.markdown("---")
+<h2>💙 Tentang AquaCek</h2>
 
-    st.markdown("""
-    <div class="glass">
-        <div style="text-align:center;">
-            <h2>💙 AquaCek</h2>
+<p style="font-size:18px;">
 
-            <p>
-            Aplikasi AquaCek dikembangkan sebagai media pembelajaran
-            dan evaluasi kualitas air berdasarkan baku mutu
-            Air Kelas I sesuai Peraturan Pemerintah Nomor 22 Tahun 2021.
-            </p>
+💧 <b>AquaCek</b> merupakan aplikasi evaluasi kualitas air yang
+dirancang untuk membantu pengguna dalam membandingkan hasil
+pengujian kualitas air dengan baku mutu Air Kelas I berdasarkan
+Peraturan Pemerintah Nomor 22 Tahun 2021.
 
-            <h4>
-            🏫 Akademi Kimia Analis Bogor
-            </h4>
+</p>
 
-            <h4>
-            🧪 Pengelolaan Limbah Industri • Angkatan XI • 2026
-            </h4>
+<p style="font-size:18px;">
 
-            <h4>
-            💧 AquaCek Team
-            </h4>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+🧪 Aplikasi ini mampu melakukan evaluasi terhadap beberapa
+parameter penting kualitas air seperti pH, BOD, COD, DO,
+TSS, dan TDS serta memberikan interpretasi parameter secara
+interaktif dan mudah dipahami.
+
+</p>
+
+<p style="font-size:18px;">
+
+📊 AquaCek dikembangkan sebagai proyek Tugas Akhir Mata Kuliah
+Logika Pemrograman oleh mahasiswa Program Studi Pengelolaan
+Limbah Industri Semester II Angkatan XI Tahun 2026
+Akademi Kimia Analis Bogor.
+
+</p>
+
+<p style="font-size:18px;">
+
+🌊 Melalui tampilan yang interaktif, informatif, dan edukatif,
+AquaCek diharapkan dapat membantu proses pembelajaran,
+praktikum, serta pemahaman mengenai evaluasi kualitas air
+sesuai peraturan yang berlaku di Indonesia.
+
+</p>
+
+<h3>
+🏫 AKA Bogor • 🧪 Pengelolaan Limbah Industri • 💧 AquaCek 2026
+</h3>
+
+</div>
+</div>
+""", unsafe_allow_html=True)
+    
 # =========================
 # RIWAYAT
 # =========================

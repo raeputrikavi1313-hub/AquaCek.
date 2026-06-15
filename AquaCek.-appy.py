@@ -174,7 +174,46 @@ border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.08);
 
 }
+/* =========================
+KARTU PARAMETER
+========================= */
 
+.param-card{
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+color:white;
+transition:0.3s;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.param-card:hover{
+transform:translateY(-8px) scale(1.02);
+}
+
+.ph{
+background:linear-gradient(135deg,#2196F3,#64B5F6);
+}
+
+.bod{
+background:linear-gradient(135deg,#FF9800,#FFB74D);
+}
+
+.cod{
+background:linear-gradient(135deg,#9C27B0,#BA68C8);
+}
+
+.do{
+background:linear-gradient(135deg,#4CAF50,#81C784);
+}
+
+.tss{
+background:linear-gradient(135deg,#795548,#A1887F);
+}
+
+.tds{
+background:linear-gradient(135deg,#607D8B,#90A4AE);
+}
 </style>
 """, unsafe_allow_html=True)
 # =========================
@@ -275,16 +314,104 @@ def baku_mutu():
 # =========================
 def interpretasi():
 
-    st.markdown("<div class='glass'><h2>Interpretasi Parameter</h2></div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="glass">
+    <h1 style="text-align:center;">
+    🧪 Interpretasi Parameter Kualitas Air
+    </h1>
+    <p style="text-align:center;">
+    Belajar parameter air dengan cara yang lebih menyenangkan 💧
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.write("""
-    pH = tingkat keasaman air  
-    BOD = bahan organik  
-    COD = bahan kimia  
-    DO = oksigen terlarut  
-    TSS = kekeruhan  
-    TDS = zat terlarut
-    """)
+    st.markdown("""
+    <div class="param-card ph">
+    <h2>⚖️ pH</h2>
+    <h3>💙 Derajat Keasaman</h3>
+    <p>
+    Menunjukkan tingkat keasaman atau kebasaan air.
+    Air yang baik memiliki pH 6–9.
+    </p>
+    <h2>😖 ← 🧪 → 😊</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="param-card bod">
+    <h2>🍂 BOD</h2>
+    <h3>🦠 Bahan Organik</h3>
+    <p>
+    Menunjukkan kebutuhan oksigen mikroorganisme
+    untuk menguraikan bahan organik.
+    </p>
+    <h2>🍌 🍃 🌱</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="param-card cod">
+    <h2>⚗️ COD</h2>
+    <h3>🧪 Pencemar Kimia</h3>
+    <p>
+    Menunjukkan jumlah oksigen yang diperlukan
+    untuk mengoksidasi bahan pencemar kimia.
+    </p>
+    <h2>🏭 🧴 ⚗️</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="param-card do">
+    <h2>🐟 DO</h2>
+    <h3>💨 Oksigen Terlarut</h3>
+    <p>
+    Semakin tinggi DO,
+    semakin baik kualitas air.
+    </p>
+    <h2>🐠 🐟 🦐 🌊</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="param-card tss">
+    <h2>🌫️ TSS</h2>
+    <h3>🟤 Padatan Tersuspensi</h3>
+    <p>
+    Lumpur, pasir dan partikel
+    yang melayang dalam air.
+    </p>
+    <h2>🌊 + 🟤🟤🟤</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="param-card tds">
+    <h2>🧂 TDS</h2>
+    <h3>💎 Padatan Terlarut</h3>
+    <p>
+    Menunjukkan jumlah zat
+    yang larut dalam air.
+    </p>
+    <h2>🧂 💎 ⚗️</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.success("""
+🎯 Ringkasan Cepat
+
+💙 pH = Keasaman
+
+🍂 BOD = Organik
+
+⚗️ COD = Kimia
+
+🐟 DO = Oksigen Terlarut
+
+🌫️ TSS = Padatan Tersuspensi
+
+🧂 TDS = Padatan Terlarut
+""")
 
 # =========================
 # LANDASAN HUKUM

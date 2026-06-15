@@ -366,38 +366,39 @@ def evaluasi():
 # =========================
 # BAKU MUTU
 # =========================
-st.markdown("""
-<div class="glass">
+def baku_mutu():
+    st.markdown("""
+    <div class="glass">
 
-<div style="
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-">
+    <div style="
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    ">
 
-<h1 style="
-text-align:center;
-font-size:60px;
-margin-bottom:5px;
-">
-📋 Baku Mutu Air Kelas I
-</h1>
+    <h1 style="
+    text-align:center;
+    font-size:60px;
+    margin-bottom:5px;
+    ">
+    📋 Baku Mutu Air Kelas I
+    </h1>
 
-<p style="
-text-align:center;
-font-size:24px;
-font-weight:bold;
-color:#2874A6;
-margin-top:0px;
-">
-💧 Berdasarkan PP Nomor 22 Tahun 2021
-</p>
+    <p style="
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#2874A6;
+    margin-top:0px;
+    ">
+    💧 Berdasarkan PP Nomor 22 Tahun 2021
+    </p>
 
-</div>
+    </div>
 
-</div>
-""", unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
     data = [
         {
             "warna":"bm-blue",

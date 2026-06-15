@@ -367,21 +367,16 @@ def evaluasi():
 # BAKU MUTU
 # =========================
 def baku_mutu():
-    st.markdown("""
-    <div class="glass">
-        <h1 style="text-align:center;">
-        📋 Baku Mutu Air Kelas I
-        </h1>
 
-        <h4 style="text-align:center;">
-        💧 Berdasarkan PP Nomor 22 Tahun 2021
-        </h4>
-    </div>
-    """, unsafe_allow_html=True)
+    st.title("📋 Baku Mutu Air Kelas I")
+
+    st.markdown(
+        "<h4 style='text-align:center;'>💧 Berdasarkan PP Nomor 22 Tahun 2021</h4>",
+        unsafe_allow_html=True
+    )
 
     st.info(
-        "🌊 Air Kelas I merupakan air yang dapat digunakan sebagai air baku air minum "
-        "dan peruntukan lain yang mensyaratkan mutu air yang sama."
+        "🌊 Air Kelas I merupakan air yang dapat digunakan sebagai air baku air minum."
     )
 
     data = [

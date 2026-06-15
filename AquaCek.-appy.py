@@ -17,53 +17,162 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-.stApp {
-    background: linear-gradient(-45deg, #e3f2fd, #bbdefb, #e1f5fe, #b3e5fc);
-    background-size: 400% 400%;
-    animation: bg 10s ease infinite;
+/* =========================
+BACKGROUND
+========================= */
+
+.stApp{
+background:linear-gradient(
+135deg,
+#dff6ff,
+#b8e8fc,
+#e3f8ff,
+#caf0f8
+);
+background-size:400% 400%;
+animation:bgmove 15s ease infinite;
 }
 
-@keyframes bg {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-.glass {
-    background: rgba(255,255,255,0.85);
-    padding: 20px;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
+/* =========================
+CARD
+========================= */
+
+.glass{
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:25px;
+box-shadow:0 8px 30px rgba(0,0,0,0.08);
+
+animation:fadeUp 0.8s ease;
 }
 
-.hero {
-    font-size: 80px;
-    text-align: center;
-    animation: float 3s ease-in-out infinite;
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-@keyframes float {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-12px);}
-    100% {transform: translateY(0);}
+/* =========================
+HERO ICON
+========================= */
+
+.hero{
+font-size:90px;
+text-align:center;
+animation:floatWater 3s ease-in-out infinite;
 }
 
-h1, h2, h3 {
-    color: #0d47a1;
+@keyframes floatWater{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-18px);}
+100%{transform:translateY(0px);}
 }
 
-.stButton button {
-    background: linear-gradient(90deg,#00B4DB,#0083B0) !important;
-    color: white !important;
-    font-weight: bold !important;
-    border-radius: 12px !important;
-    width: 100%;
+/* =========================
+SIDEBAR
+========================= */
+
+section[data-testid="stSidebar"]{
+background:linear-gradient(
+180deg,
+#0ea5e9,
+#38bdf8
+);
+}
+
+/* Menu jadi kotak */
+
+div[role="radiogroup"] > label{
+background:white !important;
+padding:12px !important;
+margin-bottom:10px !important;
+border-radius:15px !important;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+transition:0.3s;
+}
+
+div[role="radiogroup"] > label:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 20px rgba(14,165,233,0.3);
+}
+
+/* =========================
+BUTTON
+========================= */
+
+.stButton button{
+
+background:linear-gradient(
+90deg,
+#00b4db,
+#0083b0
+)!important;
+
+color:white!important;
+
+border-radius:15px!important;
+
+height:50px!important;
+
+font-weight:bold!important;
+
+transition:0.3s;
+}
+
+.stButton button:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 8px 20px rgba(0,180,219,0.4);
+
+}
+
+/* =========================
+TABLE
+========================= */
+
+[data-testid="stDataFrame"]{
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+}
+
+/* =========================
+METRIC CARD
+========================= */
+
+[data-testid="stMetric"]{
+
+background:white;
+
+padding:15px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
 }
 
 </style>
 """, unsafe_allow_html=True)
-
 # =========================
 # SESSION STORAGE
 # =========================

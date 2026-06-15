@@ -434,113 +434,76 @@ def hukum():
 # PENGEMBANG
 # =========================
 def pengembang():
-
-    st.markdown("""
-    <div class="glass">
-        <div style="text-align:center;">
-            <h1>🏫 AKA BOGOR</h1>
-            <h2>💧 AquaCek Development Team</h2>
-            <h3>🎓 Tugas Akhir Mata Kuliah Logika Pemrograman</h3>
-            <h4>🧪 Program Studi Pengelolaan Limbah Industri</h4>
-            <h4>📚 Semester II • Tahun Akademik 2026</h4>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.balloons()
-
-    st.markdown("## 👥 Tim Pengembang")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        st.markdown("""
-        <div class="glass">
-        <h3>🧪 Dela Rahayu Putri</h3>
-        <h4>🎓 NIM : 2530606</h4>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="glass">
-        <h3>🔬 Putri Bilqis Aliyyu N</h3>
-        <h4>🎓 NIM : 2530647</h4>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="glass">
-        <h3>🧫 Salsabila Putri</h3>
-        <h4>🎓 NIM : 2530650</h4>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-
-        st.markdown("""
-        <div class="glass">
-        <h3>⚙️ Mutiara Shifwah A</h3>
-        <h4>🎓 NIM : 2530640</h4>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="glass">
-        <h3>💻 Rae Putri Kavi</h3>
-        <h4>🎓 NIM : 2530648</h4>
-        </div>
-        """, unsafe_allow_html=True)
+st.balloons()
+st.success(
+    "🎉 Selamat Datang di Halaman Tim Pengembang AquaCek 💧"
+)
 st.markdown("""
 <div class="glass">
+
 <div style="text-align:center;">
+
+<h1>🏫 AKA BOGOR</h1>
+
+<h2>💧 AquaCek Development Team</h2>
+
+<hr>
+
+<h3>🎓 Tugas Akhir Mata Kuliah Logika Pemrograman</h3>
+
+<h3>🧪 Program Studi Pengelolaan Limbah Industri</h3>
+
+<h3>📚 Semester II • Tahun Akademik 2026</h3>
+
+</div>
+
+</div>
+""", unsafe_allow_html=True)
+    st.markdown("---")
+
+st.markdown("""
+<div class="glass">
 
 <h2>💙 Tentang AquaCek</h2>
 
-<p style="font-size:18px;">
+<p style="font-size:17px; text-align:justify;">
 
-💧 <b>AquaCek</b> merupakan aplikasi evaluasi kualitas air yang
-dirancang untuk membantu pengguna dalam membandingkan hasil
-pengujian kualitas air dengan baku mutu Air Kelas I berdasarkan
-Peraturan Pemerintah Nomor 22 Tahun 2021.
-
-</p>
-
-<p style="font-size:18px;">
-
-🧪 Aplikasi ini mampu melakukan evaluasi terhadap beberapa
-parameter penting kualitas air seperti pH, BOD, COD, DO,
-TSS, dan TDS serta memberikan interpretasi parameter secara
-interaktif dan mudah dipahami.
+AquaCek merupakan aplikasi evaluasi kualitas air yang
+dirancang untuk membantu pengguna dalam membandingkan
+hasil pengujian kualitas air dengan baku mutu Air Kelas I
+berdasarkan Peraturan Pemerintah Nomor 22 Tahun 2021.
 
 </p>
 
-<p style="font-size:18px;">
+<p style="font-size:17px; text-align:justify;">
 
-📊 AquaCek dikembangkan sebagai proyek Tugas Akhir Mata Kuliah
+Aplikasi ini mampu melakukan evaluasi terhadap parameter
+kualitas air seperti pH, BOD, COD, DO, TSS, dan TDS serta
+menyajikan interpretasi parameter secara interaktif sehingga
+lebih mudah dipahami oleh pengguna.
+
+</p>
+
+<p style="font-size:17px; text-align:justify;">
+
+AquaCek dikembangkan sebagai proyek Tugas Akhir Mata Kuliah
 Logika Pemrograman oleh mahasiswa Program Studi Pengelolaan
 Limbah Industri Semester II Angkatan XI Tahun 2026
 Akademi Kimia Analis Bogor.
 
 </p>
 
-<p style="font-size:18px;">
+<p style="font-size:17px; text-align:justify;">
 
-🌊 Melalui tampilan yang interaktif, informatif, dan edukatif,
+Melalui tampilan yang informatif, interaktif, dan edukatif,
 AquaCek diharapkan dapat membantu proses pembelajaran,
 praktikum, serta pemahaman mengenai evaluasi kualitas air
 sesuai peraturan yang berlaku di Indonesia.
 
 </p>
 
-<h3>
-🏫 AKA Bogor • 🧪 Pengelolaan Limbah Industri • 💧 AquaCek 2026
-</h3>
-
-</div>
 </div>
 """, unsafe_allow_html=True)
-    
 # =========================
 # RIWAYAT
 # =========================

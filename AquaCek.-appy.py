@@ -434,7 +434,6 @@ def hukum():
 # PENGEMBANG
 # =========================
 def pengembang():
-st.balloons()
 st.markdown("""
 <div class="glass">
 
@@ -501,6 +500,7 @@ sesuai peraturan yang berlaku di Indonesia.
 
 </div>
 """, unsafe_allow_html=True)
+st.balloons()
 # =========================
 # RIWAYAT
 # =========================

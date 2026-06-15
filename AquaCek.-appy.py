@@ -1,7 +1,6 @@
+
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
 
 # =========================
 # CONFIG
@@ -13,7 +12,7 @@ st.set_page_config(
 )
 
 # =========================
-# UI ANIMASI
+# CSS ANIMASI AMAN
 # =========================
 st.markdown("""
 <style>
@@ -21,21 +20,20 @@ st.markdown("""
 .stApp {
     background: linear-gradient(-45deg, #e3f2fd, #bbdefb, #e1f5fe, #b3e5fc);
     background-size: 400% 400%;
-    animation: moveBG 10s ease infinite;
+    animation: bg 10s ease infinite;
 }
 
-@keyframes moveBG {
+@keyframes bg {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
 
 .glass {
-    background: rgba(255,255,255,0.75);
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.85);
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0,180,219,0.15);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     margin-bottom: 15px;
 }
 
@@ -47,12 +45,16 @@ st.markdown("""
 
 @keyframes float {
     0% {transform: translateY(0);}
-    50% {transform: translateY(-15px);}
+    50% {transform: translateY(-12px);}
     100% {transform: translateY(0);}
 }
 
+h1, h2, h3 {
+    color: #0d47a1;
+}
+
 .stButton button {
-    background: linear-gradient(90deg, #00B4DB, #0083B0) !important;
+    background: linear-gradient(90deg,#00B4DB,#0083B0) !important;
     color: white !important;
     font-weight: bold !important;
     border-radius: 12px !important;
@@ -63,10 +65,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# SESSION
+# SESSION STORAGE
 # =========================
-if "history" not in st.session_state:
-    st.session_state.history = []
+if "data" not in st.session_state:
+    st.session_state.data = []
 
 # =========================
 # MENU
@@ -74,13 +76,13 @@ if "history" not in st.session_state:
 menu = st.sidebar.radio(
     "💧 AQUACEK MENU",
     [
-        "🏠 Home",
-        "📊 Evaluasi",
-        "💧 Baku Mutu",
-        "🧪 Interpretasi",
-        "⚖️ Hukum",
-        "👨‍💻 Pengembang",
-        "📜 Riwayat"
+        "Home",
+        "Evaluasi Kualitas Air",
+        "Baku Mutu Air Kelas I",
+        "Interpretasi Parameter",
+        "Landasan Hukum",
+        "Pengembang",
+        "Riwayat"
     ]
 )
 
@@ -88,145 +90,95 @@ menu = st.sidebar.radio(
 # HOME
 # =========================
 def home():
-
     st.markdown("""
     <div class="glass" style="text-align:center;">
         <div class="hero">💧</div>
-        <h1>AQUACEK</h1>
+        <h1>AquaCek</h1>
         <h3>Evaluasi Kualitas Air Kelas I</h3>
-        <p><b>PP No. 22 Tahun 2021</b></p>
+        <b>PP No. 22 Tahun 2021</b>
     </div>
     """, unsafe_allow_html=True)
 
-    total = len(st.session_state.history)
-
-    if total > 0:
-        avg = sum([x[3] for x in st.session_state.history]) / total
-    else:
-        avg = 0
-
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Total Sampel", total)
-    col2.metric("Rata-rata Kepatuhan", f"{avg:.1f}%")
-    col3.metric("Status Sistem", "Aktif 💧")
-
-    if total > 0:
-        df = pd.DataFrame(st.session_state.history,
-                          columns=["Nama","OK","NO","Kepatuhan"])
-
-        fig = px.bar(df, x="Nama", y="Kepatuhan",
-                     color="Kepatuhan",
-                     title="📊 Dashboard Kepatuhan")
-        st.plotly_chart(fig, use_container_width=True)
-
-        fig2 = go.Figure(go.Indicator(
-            mode="gauge+number",
-            value=avg,
-            title={"text": "Indeks Kualitas Air"},
-            gauge={
-                "axis": {"range": [0, 100]},
-                "bar": {"color": "#00B4DB"},
-                "steps": [
-                    {"range": [0, 50], "color": "#ff6b6b"},
-                    {"range": [50, 80], "color": "#feca57"},
-                    {"range": [80, 100], "color": "#1dd1a1"}
-                ]
-            }
-        ))
-
-        st.plotly_chart(fig2, use_container_width=True)
+    st.info("Aplikasi evaluasi kualitas air berbasis parameter lingkungan")
 
 # =========================
 # EVALUASI
 # =========================
 def evaluasi():
 
-    st.markdown("<div class='glass'><h2>📊 Evaluasi Air</h2></div>", unsafe_allow_html=True)
+    st.markdown("<div class='glass'><h2>Evaluasi Kualitas Air</h2></div>", unsafe_allow_html=True)
 
     nama = st.text_input("Nama Sampel")
 
-    ph = st.number_input("pH", 0.0, 14.0, 7.0)
-    bod = st.number_input("BOD", 0.0, 100.0, 1.0)
-    cod = st.number_input("COD", 0.0, 500.0, 5.0)
-    do = st.number_input("DO", 0.0, 20.0, 7.0)
-    tss = st.number_input("TSS", 0.0, 1000.0, 20.0)
-    tds = st.number_input("TDS", 0.0, 5000.0, 500.0)
+    ph = st.number_input("pH",0.0,14.0,7.0)
+    bod = st.number_input("BOD",0.0,100.0,1.0)
+    cod = st.number_input("COD",0.0,500.0,5.0)
+    do = st.number_input("DO",0.0,20.0,7.0)
+    tss = st.number_input("TSS",0.0,1000.0,20.0)
+    tds = st.number_input("TDS",0.0,5000.0,500.0)
 
-    if st.button("🔍 Analisis"):
+    if st.button("Analisis"):
 
-        df = pd.DataFrame({
-            "Parameter": ["pH","BOD","COD","DO","TSS","TDS"],
-            "Nilai": [ph,bod,cod,do,tss,tds],
-            "Status": [
-                "✔" if 6<=ph<=9 else "✖",
-                "✔" if bod<=2 else "✖",
-                "✔" if cod<=10 else "✖",
-                "✔" if do>=6 else "✖",
-                "✔" if tss<=40 else "✖",
-                "✔" if tds<=1000 else "✖"
-            ]
-        })
+        hasil = [
+            ["pH", ph, "6-9", "✔" if 6<=ph<=9 else "✖"],
+            ["BOD", bod, "≤2", "✔" if bod<=2 else "✖"],
+            ["COD", cod, "≤10", "✔" if cod<=10 else "✖"],
+            ["DO", do, "≥6", "✔" if do>=6 else "✖"],
+            ["TSS", tss, "≤40", "✔" if tss<=40 else "✖"],
+            ["TDS", tds, "≤1000", "✔" if tds<=1000 else "✖"],
+        ]
 
-        ok = df["Status"].value_counts().get("✔",0)
-        no = df["Status"].value_counts().get("✖",0)
-        persen = (ok/6)*100
+        df = pd.DataFrame(hasil, columns=["Parameter","Nilai","Standar","Status"])
 
         st.dataframe(df, use_container_width=True)
 
-        col1,col2,col3 = st.columns(3)
-        col1.metric("Memenuhi", ok)
-        col2.metric("Tidak", no)
-        col3.metric("Kepatuhan", f"{persen:.1f}%")
+        ok = df["Status"].value_counts().get("✔",0)
+        no = df["Status"].value_counts().get("✖",0)
 
+        persen = (ok/6)*100
+
+        st.success(f"Memenuhi: {ok}")
+        st.error(f"Tidak: {no}")
         st.progress(int(persen))
 
-        fig = px.pie(df, names="Status", title="Distribusi Kualitas")
-        st.plotly_chart(fig, use_container_width=True)
-
-        st.session_state.history.append([nama,ok,no,persen])
+        st.session_state.data.append([nama,ok,no,persen])
 
 # =========================
 # BAKU MUTU
 # =========================
 def baku_mutu():
 
-    st.markdown("<div class='glass'><h2>💧 Baku Mutu Air Kelas I</h2></div>", unsafe_allow_html=True)
+    st.markdown("<div class='glass'><h2>Baku Mutu Air Kelas I</h2></div>", unsafe_allow_html=True)
 
     df = pd.DataFrame({
-        "Parameter": ["pH","BOD","COD","DO","TSS","TDS"],
-        "Baku Mutu": ["6-9","≤2","≤10","≥6","≤40","≤1000"]
+        "Parameter":["pH","BOD","COD","DO","TSS","TDS"],
+        "Standar":["6-9","≤2","≤10","≥6","≤40","≤1000"]
     })
 
-    st.dataframe(df, use_container_width=True)
-
-    fig = px.bar(df, x="Parameter", y=[1,1,1,1,1,1],
-                 title="Visual Parameter Air")
-    st.plotly_chart(fig, use_container_width=True)
+    st.table(df)
 
 # =========================
 # INTERPRETASI
 # =========================
 def interpretasi():
 
-    st.markdown("<div class='glass'><h2>🧪 Interpretasi</h2></div>", unsafe_allow_html=True)
+    st.markdown("<div class='glass'><h2>Interpretasi Parameter</h2></div>", unsafe_allow_html=True)
 
-    df = pd.DataFrame([
-        ["pH","Asam/basa"],
-        ["BOD","Organik"],
-        ["COD","Kimia"],
-        ["DO","Oksigen"],
-        ["TSS","Kekeruhan"],
-        ["TDS","Zat terlarut"]
-    ], columns=["Parameter","Arti"])
-
-    st.dataframe(df, use_container_width=True)
+    st.write("""
+    pH = tingkat keasaman air  
+    BOD = bahan organik  
+    COD = bahan kimia  
+    DO = oksigen terlarut  
+    TSS = kekeruhan  
+    TDS = zat terlarut
+    """)
 
 # =========================
-# HUKUM
+# LANDASAN HUKUM
 # =========================
 def hukum():
 
-    st.markdown("<div class='glass'><h2>⚖️ Landasan Hukum</h2></div>", unsafe_allow_html=True)
+    st.markdown("<div class='glass'><h2>Landasan Hukum</h2></div>", unsafe_allow_html=True)
 
     st.info("PP No. 22 Tahun 2021 tentang Perlindungan dan Pengelolaan Lingkungan Hidup")
 
@@ -235,7 +187,7 @@ def hukum():
 # =========================
 def pengembang():
 
-    st.markdown("<div class='glass'><h2>👨‍💻 Pengembang</h2></div>", unsafe_allow_html=True)
+    st.markdown("<div class='glass'><h2>Pengembang</h2></div>", unsafe_allow_html=True)
 
     df = pd.DataFrame({
         "Nama":[
@@ -250,41 +202,39 @@ def pengembang():
         ]
     })
 
-    st.dataframe(df, use_container_width=True)
+    st.table(df)
 
 # =========================
 # RIWAYAT
 # =========================
 def riwayat():
 
-    st.markdown("<div class='glass'><h2>📜 Riwayat</h2></div>", unsafe_allow_html=True)
+    st.markdown("<div class='glass'><h2>Riwayat Evaluasi</h2></div>", unsafe_allow_html=True)
 
-    if len(st.session_state.history)==0:
+    if len(st.session_state.data) == 0:
         st.info("Belum ada data")
     else:
-        df = pd.DataFrame(st.session_state.history,
+        df = pd.DataFrame(st.session_state.data,
                           columns=["Nama","OK","NO","Kepatuhan"])
 
         st.dataframe(df, use_container_width=True)
 
-        fig = px.line(df, x="Nama", y="Kepatuhan", markers=True,
-                      title="Tren Kualitas Air")
-        st.plotly_chart(fig, use_container_width=True)
+        st.bar_chart(df.set_index("Nama")["Kepatuhan"])
 
 # =========================
 # ROUTING
 # =========================
-if menu=="🏠 Home":
+if menu == "Home":
     home()
-elif menu=="📊 Evaluasi":
+elif menu == "Evaluasi Kualitas Air":
     evaluasi()
-elif menu=="💧 Baku Mutu":
+elif menu == "Baku Mutu Air Kelas I":
     baku_mutu()
-elif menu=="🧪 Interpretasi":
+elif menu == "Interpretasi Parameter":
     interpretasi()
-elif menu=="⚖️ Hukum":
+elif menu == "Landasan Hukum":
     hukum()
-elif menu=="👨‍💻 Pengembang":
+elif menu == "Pengembang":
     pengembang()
-elif menu=="📜 Riwayat":
+elif menu == "Riwayat":
     riwayat()

@@ -38,7 +38,11 @@ animation:bgmove 15s ease infinite;
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
-
+.glass:hover{
+transform:translateY(-8px);
+transition:0.3s;
+box-shadow:0 15px 30px rgba(0,180,219,0.25);
+}
 /* =========================
 CARD
 ========================= */
@@ -296,22 +300,139 @@ def hukum():
 # =========================
 def pengembang():
 
-    st.markdown("<div class='glass'><h2>Pengembang</h2></div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="glass">
 
-    df = pd.DataFrame({
-        "Nama":[
-            "Dela Rahayu Putri",
-            "Mutiara Shifwah A",
-            "Putri Bilqis Aliyyu N",
-            "Rae Putri Kavi",
-            "Salsabila Putri"
-        ],
-        "NIM":[
-            "2530606","2530640","2530647","2530648","2530650"
-        ]
-    })
+    <div style="text-align:center;">
 
-    st.table(df)
+    <h1>🏫 AKA BOGOR</h1>
+
+    <h2>💧 AquaCek Development Team</h2>
+
+    <h3>Tugas Akhir Mata Kuliah Logika Pemrograman</h3>
+
+    <h4>Program Studi Pengelolaan Limbah Industri</h4>
+
+    <h4>Semester II • Tahun Akademik 2026</h4>
+
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    st.success("""
+🎓 Akademi Kimia Analis Bogor
+
+🧪 Program Studi Pengelolaan Limbah Industri
+
+📚 Semester II
+
+📅 Tahun Akademik 2026
+
+💧 AquaCek merupakan aplikasi evaluasi kualitas air
+berdasarkan PP Nomor 22 Tahun 2021.
+""")
+
+    st.markdown("## 👥 Tim Pengembang")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+
+        st.markdown("""
+        <div class="glass">
+
+        <h3>🧪 Dela Rahayu Putri</h3>
+
+        <b>NIM :</b> 2530606<br>
+
+        🌊 Water Quality Research
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="glass">
+
+        <h3>🔬 Putri Bilqis Aliyyu N</h3>
+
+        <b>NIM :</b> 2530647<br>
+
+        🧫 Laboratory Analysis
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="glass">
+
+        <h3>🧫 Salsabila Putri</h3>
+
+        <b>NIM :</b> 2530650<br>
+
+        ⚗️ Environmental Assessment
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+
+        st.markdown("""
+        <div class="glass">
+
+        <h3>⚙️ Mutiara Shifwah A</h3>
+
+        <b>NIM :</b> 2530640<br>
+
+        📊 Data Processing
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="glass">
+
+        <h3>💻 Rae Putri Kavi</h3>
+
+        <b>NIM :</b> 2530648<br>
+
+        👩‍💻 Application Development
+
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    st.markdown("""
+    <div class="glass">
+
+    <div style="text-align:center;">
+
+    <h2>💙 AquaCek</h2>
+
+    <p>
+    Aplikasi ini dibuat sebagai proyek akhir Mata Kuliah
+    Logika Pemrograman untuk membantu proses evaluasi
+    kualitas air berdasarkan baku mutu Air Kelas I
+    sesuai PP Nomor 22 Tahun 2021.
+    </p>
+
+    <h4>
+    🏫 Akademi Kimia Analis Bogor
+    </h4>
+
+    <h4>
+    🧪 Pengelolaan Limbah Industri • Angkatan XI • 2026
+    </h4>
+
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.balloons()
 
 # =========================
 # RIWAYAT

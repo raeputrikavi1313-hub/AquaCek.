@@ -435,9 +435,6 @@ def hukum():
 # =========================
 def pengembang():
 st.balloons()
-st.success(
-    "🎉 Selamat Datang di Halaman Tim Pengembang AquaCek 💧"
-)
 st.markdown("""
 <div class="glass">
 

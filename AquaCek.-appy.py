@@ -366,22 +366,25 @@ def evaluasi():
 # =========================
 # BAKU MUTU
 # =========================
-def baku_mutu():
 st.markdown("""
 <div class="glass">
 
 <div style="text-align:center;">
 
-<h1>📋 Baku Mutu Air Kelas I</h1>
+<h1 style="
+margin-bottom:5px;
+">
+📋 Baku Mutu Air Kelas I
+</h1>
 
-<h3 style="color:#2874A6;">
-💧 PP Nomor 22 Tahun 2021
-</h3>
-
-<p>
-🌊 Standar kualitas air untuk peruntukan
-air baku air minum dan kebutuhan lain
-yang mensyaratkan mutu air yang sama.
+<p style="
+font-size:24px;
+font-weight:bold;
+color:#2874A6;
+margin-top:0px;
+margin-bottom:10px;
+">
+💧 Berdasarkan PP Nomor 22 Tahun 2021
 </p>
 
 </div>

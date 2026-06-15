@@ -222,6 +222,46 @@ transition: all 0.3s ease;
 transform: translateY(-8px);
 box-shadow: 0 15px 30px rgba(0,180,219,0.25);
 }
+/* =========================
+KARTU BAKU MUTU
+========================= */
+
+.bm-card{
+padding:20px;
+border-radius:20px;
+margin-bottom:15px;
+color:white;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.bm-card:hover{
+transform:translateY(-8px) scale(1.02);
+}
+
+.bm-blue{
+background:linear-gradient(135deg,#2196F3,#64B5F6);
+}
+
+.bm-orange{
+background:linear-gradient(135deg,#FB8C00,#FFB74D);
+}
+
+.bm-purple{
+background:linear-gradient(135deg,#8E24AA,#BA68C8);
+}
+
+.bm-green{
+background:linear-gradient(135deg,#43A047,#81C784);
+}
+
+.bm-brown{
+background:linear-gradient(135deg,#6D4C41,#A1887F);
+}
+
+.bm-gray{
+background:linear-gradient(135deg,#546E7A,#90A4AE);
+}
 </style>
 """, unsafe_allow_html=True)
 # =========================
@@ -308,14 +348,88 @@ def evaluasi():
 # =========================
 def baku_mutu():
 
-    st.markdown("<div class='glass'><h2>Baku Mutu Air Kelas I</h2></div>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class="glass">
+    <h1 style="text-align:center;">
+    📋 Baku Mutu Air Kelas I
+    </h1>
 
-    df = pd.DataFrame({
-        "Parameter":["pH","BOD","COD","DO","TSS","TDS"],
-        "Standar":["6-9","≤2","≤10","≥6","≤40","≤1000"]
-    })
+    <p style="text-align:center;">
+    Berdasarkan PP No. 22 Tahun 2021
+    </p>
 
-    st.table(df)
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.info("""
+💧 Air Kelas I merupakan air yang dapat digunakan
+sebagai air baku air minum dan peruntukan lain
+yang mensyaratkan mutu air yang sama.
+""")
+
+    st.markdown("""
+    <div class="bm-card bm-blue">
+    <h2>⚖️ pH</h2>
+    <h3>6 - 9</h3>
+    <p>Menunjukkan tingkat keasaman air.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="bm-card bm-orange">
+    <h2>🍂 BOD</h2>
+    <h3>≤ 2 mg/L</h3>
+    <p>Beban pencemar organik.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="bm-card bm-purple">
+    <h2>⚗️ COD</h2>
+    <h3>≤ 10 mg/L</h3>
+    <p>Beban pencemar kimia.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="bm-card bm-green">
+    <h2>🐟 DO</h2>
+    <h3>≥ 6 mg/L</h3>
+    <p>Oksigen terlarut dalam air.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="bm-card bm-brown">
+    <h2>🌫️ TSS</h2>
+    <h3>≤ 40 mg/L</h3>
+    <p>Padatan tersuspensi.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="bm-card bm-gray">
+    <h2>🧂 TDS</h2>
+    <h3>≤ 1000 mg/L</h3>
+    <p>Padatan terlarut.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.success("""
+🎯 Ringkasan Cepat
+
+💙 pH = 6–9
+
+🧡 BOD = ≤ 2 mg/L
+
+💜 COD = ≤ 10 mg/L
+
+💚 DO = ≥ 6 mg/L
+
+🤎 TSS = ≤ 40 mg/L
+
+🩶 TDS = ≤ 1000 mg/L
+""")
 
 # =========================
 # INTERPRETASI
